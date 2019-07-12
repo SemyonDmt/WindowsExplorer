@@ -38,6 +38,9 @@ namespace WindowsExplorer.Views
 
         private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)
         {
+            if (e.Column != 1)
+                return;
+
             const char desc = '\u25b2';
             const char asc = '\u25bc';
 
