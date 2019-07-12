@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace WindowsExplorer
+namespace WindowsExplorer.Views
 {
     public interface IExplorer
     {

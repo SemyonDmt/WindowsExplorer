@@ -22,7 +22,7 @@ namespace WindowsExplorer.Views
 
         public void SetListView(ListViewItem[] items)
         {
-            this.listView1.Items.Clear();
+            listView1.Items.Clear();
             listView1.Items.AddRange(items);
         }
 

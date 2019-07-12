@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsExplorer.Infrastructure;
 using WindowsExplorer.Models;
+using WindowsExplorer.Views;
 
 namespace WindowsExplorer.Controllers
 {
@@ -119,7 +120,7 @@ namespace WindowsExplorer.Controllers
         private static readonly ListViewItem[] _calcProcess = new[] { new ListViewItem("Производится подсчет размера...",  0) };
         private static readonly ListViewItem[] _dirNotExist = new[] { new ListViewItem("Директория не существует", 0) };
         private static readonly ListViewItem[] _accessDenied = new[] { new ListViewItem("Отказано в доступе", 0) };
-        private static readonly TreeNode _rootNode = new TreeNode { Text = "All disk", Nodes = {"1", "fake" } };
+        private static readonly TreeNode _rootNode = new TreeNode { Text = @"All disk", Nodes = {"1", "fake" } };
 
     }
 }

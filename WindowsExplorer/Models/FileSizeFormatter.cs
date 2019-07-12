@@ -4,7 +4,7 @@ namespace WindowsExplorer.Models
 {
     public static class FileSizeFormatter
     {
-        private static readonly string[] Suffixes = { "Bytes", "KB", "MB", "GB", "TB", "PB" };
+        private static readonly string[] _suffixes = { "Bytes", "KB", "MB", "GB", "TB", "PB" };
 
         public static string FormatSize(long bytes)
         {
@@ -15,7 +15,7 @@ namespace WindowsExplorer.Models
                 number = number / 1024;
                 counter++;
             }
-            return $"{number:n1} {Suffixes[counter]}";
+            return $"{number:n1} {_suffixes[counter]}";
         }
     }
 }
