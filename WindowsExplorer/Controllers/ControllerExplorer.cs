@@ -58,7 +58,7 @@ namespace WindowsExplorer.Controllers
         {
             _cts?.Cancel();
             _cts = new CancellationTokenSource();
-            _objectFromDisks = Array.Empty<ObjectFromDisk>();
+            _objectFromDisks = _calcProcessObj;
             View?.SetListView(_calcProcess);
 
             try
@@ -94,10 +94,12 @@ namespace WindowsExplorer.Controllers
             }
             catch (DirectoryNotFoundException)
             {
+                _objectFromDisks = _dirNotExistObj;
                 return _dirNotExist;
             }
             catch (UnauthorizedAccessException)
             {
+                _objectFromDisks = _accessDeniedObj;
                 return _accessDenied;
             }
         }
@@ -117,9 +119,12 @@ namespace WindowsExplorer.Controllers
             }).ToArray();
         }
 
-        private static readonly ListViewItem[] _calcProcess = new[] { new ListViewItem("Производится подсчет размера...",  0) };
-        private static readonly ListViewItem[] _dirNotExist = new[] { new ListViewItem("Директория не существует", 0) };
-        private static readonly ListViewItem[] _accessDenied = new[] { new ListViewItem("Отказано в доступе", 0) };
+        private static readonly ObjectFromDisk[] _calcProcessObj = { new ObjectFromDisk{ IsFile = false, Name = "Производится подсчет размера..." } };
+        private static readonly ObjectFromDisk[] _accessDeniedObj = { new ObjectFromDisk { IsFile = false, Name = "Отказано в доступе" } };
+        private static readonly ObjectFromDisk[] _dirNotExistObj = { new ObjectFromDisk { IsFile = false, Name = "Директория не существует" } };
+        private static readonly ListViewItem[] _calcProcess = { new ListViewItem("Производится подсчет размера...",  0) };
+        private static readonly ListViewItem[] _dirNotExist = { new ListViewItem("Директория не существует", 0) };
+        private static readonly ListViewItem[] _accessDenied = { new ListViewItem("Отказано в доступе", 0) };
         private static readonly TreeNode _rootNode = new TreeNode { Text = @"All disk", Nodes = {"1", "fake" } };
 
     }
